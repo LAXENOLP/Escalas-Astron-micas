@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    color: white;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* Contenedor */
+#container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Objetos */
+.obj {
+    position: absolute;
+    transition: transform 1s ease, opacity 1s ease;
+    transform: translate(-50%, -50%);
+}
+
+/* Círculos */
+.circle {
+    border-radius: 50%;
+    background: white;
+}
+
+/* Botones */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#zoomIn { right: 20px; }
+#zoomOut { left: 20px; }
+
+#bg, #bg2 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1s ease, opacity 1s ease;
+    z-index: -1;
+}
+
+
+.obj img {
+    display: block;
+    margin: 0 auto;
+    transition: transform 1s ease;
+}
+
+/* opcional pero GOD */
+.obj img:hover {
+    transform: scale(1.1);
+}
+
+.obj img {
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+/* Fondo normal */
+#bg {
+    background-image: url("img/espacio.gif"); /* CAMBIA ESTO */
+    opacity: 1;
+}
+
+/* Fondo multiverso */
+#bg2 {
+    background-image: url("img/multiversos2.png"); /* CAMBIA ESTO */
+    opacity: 0;
+}
+
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: #00ff00;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    z-index: 9999;
+    font-family: monospace;
+}
+
+.terminal p {
+    margin: 10px 0;
+}
+
+#startBtn {
+    margin-top: 20px;
+    background: black;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#startBtn:hover {
+    background: #00ff00;
+    color: black;
+}
+
+.terminal p::after {
+    content: "_";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+/* 🌌 ANIMACIÓN DE FLOTAR */
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* aplicar flotación SOLO a imágenes */
+.obj img {
+    animation: flotar 4s ease-in-out infinite;
+}
+
+/* 🔥 variación de velocidad */
+.obj:nth-child(odd) img {
+    animation-duration: 5s;
+}
+
+.obj:nth-child(even) img {
+    animation-duration: 3.5s;
+}
+
+/* 😈 delays para que no floten igual */
+.obj:nth-child(1) img { animation-delay: 0s; }
+.obj:nth-child(2) img { animation-delay: 1s; }
+.obj:nth-child(3) img { animation-delay: 2s; }
+.obj:nth-child(4) img { animation-delay: 0.5s; }
+.obj:nth-child(5) img { animation-delay: 1.5s; }
+.obj:nth-child(6) img { animation-delay: 0.2s; }
+.obj:nth-child(7) img { animation-delay: 1.2s; }
+.obj:nth-child(8) img { animation-delay: 2.2s; }
+
+.label {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 5px rgba(255,255,255,0.7);
+    margin-top: 8px;
+}
+
+#titulo {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+
+    font-size: 45px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+
+    z-index: 10;
+    pointer-events: none;
+
+    letter-spacing: 2px;
+    opacity: 0.9;
+
+    animation: flotarTitulo 6s ease-in-out infinite;
+}
+
+/* 🌌 animación suave */
+@keyframes flotarTitulo {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
